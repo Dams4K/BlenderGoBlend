@@ -14,6 +14,10 @@ class GOBLEND_CollisionProperties(bpy.types.PropertyGroup):
         name="Has Collision",
         default=False
     )
+    collision_only: bpy.props.BoolProperty(
+        name="Collision Only",
+        default=False
+    )
     collision_type: bpy.props.EnumProperty(
         name="Collision Type",
         items=COLLISION_TYPES,

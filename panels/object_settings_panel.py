@@ -17,6 +17,10 @@ class GOBLEND_PT_ObjectSettings(GOBLEND_PT_GeneralSettings, bpy.types.Panel):
 
         layout.prop(props.collision, "has_collision")
 
-        row = layout.row()
-        row.enabled = props.collision.has_collision
-        row.prop(props.collision, "collision_type")
+        collision_only_row = layout.row()
+        collision_only_row.enabled = props.collision.has_collision
+        collision_only_row.prop(props.collision, "collision_only")
+
+        collision_type_row = layout.row()
+        collision_type_row.enabled = props.collision.has_collision
+        collision_type_row.prop(props.collision, "collision_type")

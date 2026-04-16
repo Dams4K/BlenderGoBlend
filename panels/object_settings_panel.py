@@ -36,6 +36,14 @@ class GOBLEND_PT_ObjectSettings_Collisions(bpy.types.Panel):
         collision_only_row.enabled = props.collision.has_collision
         collision_only_row.prop(props.collision, "collision_only")
 
+        color_row = layout.row()
+        color_row.enabled = props.collision.has_collision
+        color_row.prop(props.collision, "color")
+        
+        shape_row = layout.row()
+        shape_row.enabled = props.collision.has_collision
+        shape_row.prop(props.collision, "collision_shape")
+
         layer_row = layout.row()
         layer_row.enabled = props.collision.has_collision
         layer_row.prop(props.collision, "layer")

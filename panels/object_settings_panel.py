@@ -54,21 +54,6 @@ class GOBLEND_PT_ObjectSettings_Collisions(bpy.types.Panel):
         collision_type_row = layout.row()
         collision_type_row.enabled = props.collision.has_collision
         collision_type_row.prop(props.collision, "collision_type")
-
-class GOBLEND_PT_MaterialsSettings(bpy.types.Panel):
-    bl_space_type = "PROPERTIES"
-    bl_region_type = "WINDOW"
-    bl_label = "Godot Settings"
-    bl_idname = "GOBLEND_PT_MaterialsSettings"
-    bl_context = "material"
-
-    def draw(self, context):
-        layout = self.layout
-        mat = context.material
-
-        props = mat.goblend
-
-        layout.prop(props, "unshaded")
     
 class GOBLEND_PT_ObjectSettings_Geometry(bpy.types.Panel):
     bl_space_type = "PROPERTIES"

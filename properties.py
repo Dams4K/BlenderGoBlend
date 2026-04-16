@@ -42,6 +42,12 @@ Performance: ConvexPolygonShape3D is faster to check collisions against compared
     ("BOUNDARIES", "Boundaries", "Box shape"),
 )
 
+SHADING_MODE = (
+    ("UNSHADED", "Unshaded", "The object will not receive shadows. This is the fastest to render, but it disables all interactions with lights."),
+    ("PER_PIXEL", "Per-Pixel", "The object will be shaded per pixel. Useful for realistic shading effects."),
+    ("PER_VERTEX", "Per-Vertex", "The object will be shaded per vertex. Useful when you want cheaper shaders and do not care about visual quality.")
+)
+
 class GOBLEND_CollisionProperties(bpy.types.PropertyGroup):
     has_collision: bpy.props.BoolProperty(
         name="Has Collision",
@@ -89,9 +95,10 @@ class GOBLEND_ExportProperties(bpy.types.PropertyGroup):
     )
 
 class GOBLEND_MaterialsProperties(bpy.types.PropertyGroup):
-    unshaded: bpy.props.BoolProperty(
+    unshaded: bpy.props.EnumProperty(
         name="Unshaded",
-        default=False
+        items=SHADING_MODE,
+        default="PER_PIXEL"
     )
 
 class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):

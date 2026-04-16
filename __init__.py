@@ -22,11 +22,16 @@ classes = (
     GOBLEND_GeneralProperties,
     GOBLEND_CollisionProperties,
     GOBLEND_ExportProperties,
+    GOBLEND_MaterialsProperties,
+    GOBLEND_GeometryProperties,
 
     GOBLEND_ObjectProperties,
     GOBLEND_CollectionProperties,
     
     GOBLEND_PT_ObjectSettings,
+    GOBLEND_PT_ObjectSettings_Collisions,
+    GOBLEND_PT_ObjectSettings_Materials,
+    GOBLEND_PT_ObjectSettings_Geometry,
     GOBLEND_PT_CollectionSettings,
     GOBLEND_OT_ExportCollection
 )

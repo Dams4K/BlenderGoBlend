@@ -1,6 +1,5 @@
 import bpy
 
-from ..general import *
 from .general_settings_panel import *
 
 

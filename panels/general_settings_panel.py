@@ -1,7 +1,5 @@
 import bpy
 
-from ..general import *
-
 class GOBLEND_PT_GeneralSettings:
     bl_space_type = "PROPERTIES"
     bl_region_type = "WINDOW"

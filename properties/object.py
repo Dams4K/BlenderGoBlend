@@ -42,27 +42,17 @@ Performance: ConvexPolygonShape3D is faster to check collisions against compared
     ("BOUNDARIES", "Boundaries", "Box shape"),
 )
 
-SHADING_MODE = (
-    ("UNSHADED", "Unshaded", "The object will not receive shadows. This is the fastest to render, but it disables all interactions with lights."),
-    ("PER_PIXEL", "Per-Pixel", "The object will be shaded per pixel. Useful for realistic shading effects."),
-    ("PER_VERTEX", "Per-Vertex", "The object will be shaded per vertex. Useful when you want cheaper shaders and do not care about visual quality.")
-)
-
 class GOBLEND_CollisionProperties(bpy.types.PropertyGroup):
-    has_collision: bpy.props.BoolProperty(
-        name="Has Collision",
-        default=False
+    name: bpy.props.StringProperty(
+        name="Collision",
+        default="Collision"
     )
-    collision_only: bpy.props.BoolProperty(
-        name="Collision Only",
-        default=False
-    )
-    collision_type: bpy.props.EnumProperty(
-        name="Collision Type",
+    type: bpy.props.EnumProperty(
+        name="Type",
         items=COLLISION_TYPES,
         default="STATIC_BODY"
     )
-    collision_shape: bpy.props.EnumProperty(
+    shape: bpy.props.EnumProperty(
         name="Shape",
         items=COLLISION_SHAPE,
         default="TRIMESH"
@@ -88,19 +78,6 @@ class GOBLEND_CollisionProperties(bpy.types.PropertyGroup):
         default= (True,) + (False,) * 31
     )
 
-class GOBLEND_ExportProperties(bpy.types.PropertyGroup):
-    export_path: bpy.props.StringProperty(
-        name="Export Path",
-        subtype="DIR_PATH"
-    )
-
-class GOBLEND_MaterialsProperties(bpy.types.PropertyGroup):
-    shade_mode: bpy.props.EnumProperty(
-        name="Shade Mode",
-        items=SHADING_MODE,
-        default="PER_PIXEL"
-    )
-
 class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):
     cast_shadow: bpy.props.EnumProperty(
         name="Cast Shadow",
@@ -110,7 +87,14 @@ class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):
 
 class GOBLEND_ObjectProperties(bpy.types.PropertyGroup):
     general: bpy.props.PointerProperty(type=GOBLEND_GeneralProperties)
-    collision: bpy.props.PointerProperty(type=GOBLEND_CollisionProperties)
+
+    collision_only: bpy.props.BoolProperty(
+        name="Collision Only",
+        default=False
+    )
+    collisions: bpy.props.CollectionProperty(type=GOBLEND_CollisionProperties)
+    collision_index: bpy.props.IntProperty()
+    
     layers: bpy.props.BoolVectorProperty(
         name="Layers",
         size=20,
@@ -118,7 +102,3 @@ class GOBLEND_ObjectProperties(bpy.types.PropertyGroup):
         default= (True,) + (False,) * 19
     )
     geometry: bpy.props.PointerProperty(type=GOBLEND_GeometryProperties)
-
-class GOBLEND_CollectionProperties(bpy.types.PropertyGroup):
-    general: bpy.props.PointerProperty(type=GOBLEND_GeneralProperties)
-    export: bpy.props.PointerProperty(type=GOBLEND_ExportProperties)

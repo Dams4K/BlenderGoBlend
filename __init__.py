@@ -19,6 +19,10 @@ CANCELLED = {"CANCELLED"}
 FINISHED = {"FINISHED"}
 
 classes = (
+    GOBLEND_UL_Collisions,
+    GOBLEND_OT_AddCollision,
+    GOBLEND_OT_RemoveCollision,
+
     GOBLEND_GeneralProperties,
     GOBLEND_CollisionProperties,
     GOBLEND_ExportProperties,
@@ -27,7 +31,7 @@ classes = (
 
     GOBLEND_ObjectProperties,
     GOBLEND_CollectionProperties,
-    
+
     GOBLEND_PT_ObjectSettings,
     GOBLEND_PT_ObjectSettings_Collisions,
     GOBLEND_PT_MaterialsSettings,

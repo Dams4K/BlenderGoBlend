@@ -1,6 +1,6 @@
 import bpy, os
 
-from ..general import *
+from ..helper import *
 
 def collection_resolve_export_dir_path(collection):
     root = bpy.context.scene.collection

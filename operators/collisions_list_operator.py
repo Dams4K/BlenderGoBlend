@@ -17,6 +17,6 @@ class GOBLEND_OT_RemoveCollision(bpy.types.Operator):
     def execute(self, context):
         obj = context.object
         props = obj.goblend
-        props.collisions.list.remove(props.collision.list_index)
-        props.collision.list_index = max(0, props.collision.list_index - 1)
+        props.collisions.list.remove(props.collisions.list_index)
+        props.collisions.list_index = max(0, props.collisions.list_index - 1)
         return {'FINISHED'}

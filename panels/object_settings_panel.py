@@ -31,10 +31,10 @@ class GOBLEND_PT_ObjectSettings_Collisions(bpy.types.Panel):
         layout = self.layout
         obj = context.object
 
-        props = obj.goblend
+        props = obj.goblend.collisions
 
         collision_only_row = layout.row()
-        collision_only_row.enabled = len(props.collisions) > 0
+        collision_only_row.enabled = len(props.list) > 0
         collision_only_row.prop(props, "collision_only")
 
         collisions_row = layout.row()
@@ -42,17 +42,17 @@ class GOBLEND_PT_ObjectSettings_Collisions(bpy.types.Panel):
             "GOBLEND_UL_Collisions",
             "",
             props,
-            "collisions",
+            "list",
             props,
-            "collision_index"
+            "list_index"
         )
 
         col = collisions_row.column(align=True)
         col.operator("goblend.add_collision", icon='ADD', text="")
         col.operator("goblend.remove_collision", icon='REMOVE', text="")
 
-        if props.collisions:
-            item = props.collisions[props.collision_index]
+        if props.list:
+            item = props.list[props.list_index]
 
             col = layout.column()
             

@@ -20,11 +20,11 @@ FINISHED = {"FINISHED"}
 
 classes = (
     GOBLEND_UL_Collisions,
-    GOBLEND_OT_AddCollision,
-    GOBLEND_OT_RemoveCollision,
 
     GOBLEND_GeneralProperties,
     GOBLEND_CollisionProperties,
+    GOBLEND_CollisionsProperties,
+
     GOBLEND_ExportProperties,
     GOBLEND_MaterialsProperties,
     GOBLEND_GeometryProperties,
@@ -37,7 +37,10 @@ classes = (
     GOBLEND_PT_MaterialsSettings,
     GOBLEND_PT_ObjectSettings_Geometry,
     GOBLEND_PT_CollectionSettings,
-    GOBLEND_OT_ExportCollection
+
+    GOBLEND_OT_ExportCollection,
+    GOBLEND_OT_AddCollision,
+    GOBLEND_OT_RemoveCollision,
 )
 
 def register():

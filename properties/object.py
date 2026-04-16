@@ -78,6 +78,14 @@ class GOBLEND_CollisionProperties(bpy.types.PropertyGroup):
         default= (True,) + (False,) * 31
     )
 
+class GOBLEND_CollisionsProperties(bpy.types.PropertyGroup):
+    collision_only: bpy.props.BoolProperty(
+        name="Collision Only",
+        default=False
+    )
+    list: bpy.props.CollectionProperty(type=GOBLEND_CollisionProperties)
+    list_index: bpy.props.IntProperty()
+
 class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):
     cast_shadow: bpy.props.EnumProperty(
         name="Cast Shadow",
@@ -87,14 +95,7 @@ class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):
 
 class GOBLEND_ObjectProperties(bpy.types.PropertyGroup):
     general: bpy.props.PointerProperty(type=GOBLEND_GeneralProperties)
-
-    collision_only: bpy.props.BoolProperty(
-        name="Collision Only",
-        default=False
-    )
-    collisions: bpy.props.CollectionProperty(type=GOBLEND_CollisionProperties)
-    collision_index: bpy.props.IntProperty()
-    
+    collisions: bpy.props.PointerProperty(type=GOBLEND_CollisionsProperties)
     layers: bpy.props.BoolVectorProperty(
         name="Layers",
         size=20,

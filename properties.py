@@ -71,7 +71,6 @@ class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):
 class GOBLEND_ObjectProperties(bpy.types.PropertyGroup):
     general: bpy.props.PointerProperty(type=GOBLEND_GeneralProperties)
     collision: bpy.props.PointerProperty(type=GOBLEND_CollisionProperties)
-    materials: bpy.props.PointerProperty(type=GOBLEND_MaterialsProperties)
     layers: bpy.props.BoolVectorProperty(
         name="Layers",
         size=20,

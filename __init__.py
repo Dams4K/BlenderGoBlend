@@ -30,7 +30,7 @@ classes = (
     
     GOBLEND_PT_ObjectSettings,
     GOBLEND_PT_ObjectSettings_Collisions,
-    GOBLEND_PT_ObjectSettings_Materials,
+    GOBLEND_PT_MaterialsSettings,
     GOBLEND_PT_ObjectSettings_Geometry,
     GOBLEND_PT_CollectionSettings,
     GOBLEND_OT_ExportCollection
@@ -42,10 +42,12 @@ def register():
 
     bpy.types.Object.goblend = bpy.props.PointerProperty(type=GOBLEND_ObjectProperties)
     bpy.types.Collection.goblend = bpy.props.PointerProperty(type=GOBLEND_CollectionProperties)
+    bpy.types.Material.goblend = bpy.props.PointerProperty(type=GOBLEND_MaterialsProperties)
 
 def unregister():
     del bpy.types.Object.goblend
     del bpy.types.Collection.goblend
+    del bpy.types.Material.goblend
     
     for cls in classes:
         bpy.utils.unregister_class(cls)

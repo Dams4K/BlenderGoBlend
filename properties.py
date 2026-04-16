@@ -95,8 +95,8 @@ class GOBLEND_ExportProperties(bpy.types.PropertyGroup):
     )
 
 class GOBLEND_MaterialsProperties(bpy.types.PropertyGroup):
-    unshaded: bpy.props.EnumProperty(
-        name="Unshaded",
+    shade_mode: bpy.props.EnumProperty(
+        name="Shade Mode",
         items=SHADING_MODE,
         default="PER_PIXEL"
     )

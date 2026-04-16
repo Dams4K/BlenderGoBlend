@@ -19,4 +19,4 @@ class GOBLEND_PT_MaterialsSettings(bpy.types.Panel):
 
         props = mat.goblend
 
-        layout.prop(props, "unshaded")
+        layout.prop(props, "shade_mode")

@@ -77,3 +77,19 @@ class GOBLEND_PT_ObjectSettings_Geometry(bpy.types.Panel):
         props = obj.goblend
 
         layout.prop(props.geometry, "cast_shadow")
+
+class GOBLEND_PT_ObjectSettings_GlobalIllumination(bpy.types.Panel):
+    bl_space_type = "PROPERTIES"
+    bl_region_type = "WINDOW"
+    bl_label = "Global Illumination"
+    bl_idname = "GOBLEND_PT_ObjectSettings_GlobalIllumination"
+    bl_parent_id = gs_idname("Object")
+
+    def draw(self, context):
+        layout = self.layout
+        obj = context.object
+
+        props = obj.goblend.global_illumination
+
+        layout.prop(props, "mode")
+        layout.prop(props, "lightmap_texel_scale")

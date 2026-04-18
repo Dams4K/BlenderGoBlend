@@ -24,7 +24,6 @@ classes = (
     GOBLEND_GeneralProperties,
     GOBLEND_CollisionProperties,
     GOBLEND_CollisionsProperties,
-    GOBLEND_GlobalIlluminationProperties,
 
     GOBLEND_ExportProperties,
     GOBLEND_MaterialsProperties,
@@ -37,7 +36,6 @@ classes = (
     GOBLEND_PT_ObjectSettings_Collisions,
     GOBLEND_PT_MaterialsSettings,
     GOBLEND_PT_ObjectSettings_Geometry,
-    GOBLEND_PT_ObjectSettings_GlobalIllumination,
     GOBLEND_PT_CollectionSettings,
 
     GOBLEND_OT_ExportCollection,

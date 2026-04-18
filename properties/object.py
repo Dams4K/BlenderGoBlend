@@ -86,12 +86,6 @@ class GOBLEND_CollisionsProperties(bpy.types.PropertyGroup):
     list: bpy.props.CollectionProperty(type=GOBLEND_CollisionProperties)
     list_index: bpy.props.IntProperty()
 
-class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):
-    cast_shadow: bpy.props.EnumProperty(
-        name="Cast Shadow",
-        items=CAST_SHADOW_TYPES,
-        default="ON"
-    )
 
 GLOBAL_ILLUMINATION_MODE = (
     ("DISABLED", "Disabled", "Disabled global illumination mode. Use for dynamic objects that do not contribute to global illumination (such as characters). When using VoxelGI and SDFGI, the geometry will receive indirect lighting and reflections but the geometry will not be considered in GI baking."),
@@ -99,9 +93,14 @@ GLOBAL_ILLUMINATION_MODE = (
     ("DYNAMIC", "Dynamic", "Dynamic global illumination mode. Use for dynamic objects that contribute to global illumination. This GI mode is only effective when using VoxelGI, but it has a higher performance impact than GI_MODE_STATIC. When using other GI methods, this will act the same as GI_MODE_DISABLED. When using LightmapGI, the object will receive indirect lighting using lightmap probes instead of using the baked lightmap texture."),
 )
 
-class GOBLEND_GlobalIlluminationProperties(bpy.types.PropertyGroup):
-    mode: bpy.props.EnumProperty(
-        name="Mode",
+class GOBLEND_GeometryProperties(bpy.types.PropertyGroup):
+    cast_shadow: bpy.props.EnumProperty(
+        name="Cast Shadow",
+        items=CAST_SHADOW_TYPES,
+        default="ON"
+    )
+    gi_mode: bpy.props.EnumProperty(
+        name="GI Mode",
         items=GLOBAL_ILLUMINATION_MODE,
         default="STATIC"
     )
@@ -121,4 +120,3 @@ class GOBLEND_ObjectProperties(bpy.types.PropertyGroup):
         default= (True,) + (False,) * 19
     )
     geometry: bpy.props.PointerProperty(type=GOBLEND_GeometryProperties)
-    global_illumination: bpy.props.PointerProperty(type=GOBLEND_GlobalIlluminationProperties)

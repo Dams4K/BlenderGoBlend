@@ -29,18 +29,22 @@ class GOBLEND_OT_ExportCollection(bpy.types.Operator):
             self.report(ERROR, "No collection selected")
             return CANCELLED
 
-        if not collection.goblend.general.exported:
-            self.report(ERROR, "This collection can't be exported")
-            return CANCELLED
-        
+        for col in collection.children:
+            with context.temp_override(collection=col):
+                bpy.ops.goblend.export_collection()
+
         export_dir_path = collection_resolve_export_dir_path(collection)
         export_path = os.path.join(export_dir_path, f"{collection.name}.glb")
 
         previous_selection = context.selected_objects
-
         bpy.ops.object.select_all(action="DESELECT")
+
+        hidden_objects = []
         for obj in collection.objects:
             if obj.goblend.general.exported:
+                if obj.hide_get():
+                    hidden_objects.append(obj)
+                    obj.hide_set(False)
                 obj.select_set(True)
         
         if collection.objects:
@@ -77,16 +81,18 @@ class GOBLEND_OT_ExportCollection(bpy.types.Operator):
 
             export_optimize_animation_size=True,
 
+            use_visible=False,
+            use_renderable=False,
+
             check_existing=False,
         )
-
-        for col in collection.children:
-            with context.temp_override(collection=col):
-                bpy.ops.goblend.export_collection()
 
         bpy.ops.object.select_all(action="DESELECT")
         for obj in previous_selection:
             obj.select_set(True)
+
+        for obj in hidden_objects:
+            obj.hide_set(True)
 
         self.report(INFO, f"exported in: {export_path}")
         return FINISHED
